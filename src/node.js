@@ -37,6 +37,7 @@ const MathJaxNode = React.createClass({
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         return (
             nextProps.children != this.props.children
+            || nextProps.inline != this.props.inline
             || nextContext.MathJax != this.context.MathJax
         );
     },
@@ -94,9 +95,11 @@ const MathJaxNode = React.createClass({
      * @return {DOMNode} script
      */
     setScriptText(text) {
+        const { inline } = this.props;
+
         if (!this.script) {
             this.script = document.createElement('script');
-            this.script.type = 'math/tex';
+            this.script.type = 'math/tex; ' + (inline ? '' : 'mode=display');
             this.refs.node.appendChild(this.script);
         }
 
