@@ -1,0 +1,29 @@
+{
+  "name": "react-mathjax",
+  "version": "0.0.0",
+  "description": "React component to render math",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamyPesse/react-mathjax.git"
+  },
+  "keywords": [
+    "react",
+    "mathjax",
+    "math"
+  ],
+  "author": "Samy Pessé <samypesse@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/SamyPesse/react-mathjax/issues"
+  },
+  "homepage": "https://github.com/SamyPesse/react-mathjax#readme",
+  "devDependencies": {
+    "eslint": "^3.12.0",
+    "eslint-config-gitbook": "^1.4.0",
+    "react": "^15.4.1"
+  }
+}
