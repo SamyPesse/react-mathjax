@@ -23,12 +23,19 @@ const MathJaxNode = React.createClass({
         };
     },
 
+    /**
+     * Render the math once the node is mounted
+     */
     componentDidMount() {
         this.typeset();
     },
 
-    componentDidUpdate() {
-        this.typeset();
+    /**
+     * Update the jax, force update if the display mode changed
+     */
+    componentDidUpdate(prevProps) {
+        const forceUpdate = prevProps.inline != this.props.inline;
+        this.typeset(forceUpdate);
     },
 
     /**
@@ -46,6 +53,13 @@ const MathJaxNode = React.createClass({
      * Clear the math when unmounting the node
      */
     componentWillUnmount() {
+        this.clear();
+    },
+
+    /**
+     * Clear the jax
+     */
+    clear() {
         const { MathJax } = this.context;
 
         if (!this.script || !MathJax) {
@@ -59,9 +73,10 @@ const MathJaxNode = React.createClass({
     },
 
     /**
-     * Update math in the node
+     * Update math in the node.
+     * @param {Boolean} forceUpdate
      */
-    typeset() {
+    typeset(forceUpdate) {
         const { MathJax } = this.context;
         const { children, onRender } = this.props;
 
@@ -71,7 +86,11 @@ const MathJaxNode = React.createClass({
 
         const text = children;
 
-        if (this.script) {
+        if (forceUpdate) {
+            this.clear();
+        }
+
+        if (!forceUpdate && this.script) {
             MathJax.Hub.Queue(() => {
                 const jax = MathJax.Hub.getJaxFor(this.script);
 
