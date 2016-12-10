@@ -1,8 +1,8 @@
 {
   "name": "react-mathjax",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "React component to render math",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint .",
     "prepublish": "babel --out-dir ./lib ./src",
