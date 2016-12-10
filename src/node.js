@@ -34,8 +34,11 @@ const MathJaxNode = React.createClass({
     /**
      * Prevent update when the tex has not changed
      */
-    shouldComponentUpdate(nextProps) {
-        return (nextProps.children != this.props.children);
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return (
+            nextProps.children != this.props.children
+            || nextContext.MathJax != this.context.MathJax
+        );
     },
 
     /**
@@ -61,11 +64,11 @@ const MathJaxNode = React.createClass({
         const { MathJax } = this.context;
         const { children, onRender } = this.props;
 
-        const text = React.Children.only(children);
-
         if (!MathJax) {
             return;
         }
+
+        const text = children;
 
         if (this.script) {
             MathJax.Hub.Queue(() => {

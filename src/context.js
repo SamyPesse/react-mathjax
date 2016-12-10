@@ -24,7 +24,7 @@ const MathJaxContext = React.createClass({
     },
 
     childContextTypes: {
-        mathJax: React.PropTypes.object
+        MathJax: React.PropTypes.object
     },
 
     getDefaultProps() {
@@ -42,19 +42,26 @@ const MathJaxContext = React.createClass({
 
     getChildContext() {
         return {
-
+            MathJax: typeof MathJax == 'undefined' ? undefined : MathJax
         };
     },
 
     componentDidMount() {
-        const { script, options } = this.props;
+        const { script } = this.props;
 
-        loadScript(script, (err) => {
-            MathJax.Hub.Config(options);
+        if (!script) {
+            return this.onLoad();
+        }
 
-            this.setState({
-                loaded: true
-            });
+        loadScript(script, this.onLoad);
+    },
+
+    onLoad(err) {
+        const { options } = this.props;
+        MathJax.Hub.Config(options);
+
+        this.setState({
+            loaded: true
         });
     },
 
