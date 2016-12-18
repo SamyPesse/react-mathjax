@@ -1,6 +1,6 @@
 {
   "name": "react-mathjax",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React component to render math",
   "main": "./lib/index.js",
   "scripts": {
