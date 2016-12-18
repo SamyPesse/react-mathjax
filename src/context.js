@@ -19,7 +19,10 @@ const DEFAULT_OPTIONS = {
 const MathJaxContext = React.createClass({
     propTypes: {
         children: React.PropTypes.node.isRequired,
-        script:   React.PropTypes.string,
+        script:   React.PropTypes.oneOfType([
+            React.PropTypes.string,
+            React.PropTypes.oneOf([false])
+        ]),
         options:  React.PropTypes.object
     },
 
