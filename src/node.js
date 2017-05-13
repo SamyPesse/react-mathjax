@@ -1,60 +1,66 @@
-const React = require('react');
-const process = require('./process');
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import process from './process';
 
 /**
  * React component to render maths using mathjax
  * @type {ReactClass}
  */
-const MathJaxNode = React.createClass({
-    propTypes: {
-        inline:   React.PropTypes.bool,
-        children: React.PropTypes.node.isRequired,
-        onRender: React.PropTypes.func
-    },
 
-    contextTypes: {
-        MathJax: React.PropTypes.object
-    },
+class MathJaxNode extends Component {
+    constructor(props) {
+        super(props);
+        this.typeset = this.typeset.bind(this);
+        this.clear = this.clear.bind(this);
+    }
 
-    getDefaultProps() {
-        return {
-            inline:   false,
-            onRender: () => {}
-        };
-    },
+    static propTypes = {
+        inline: PropTypes.bool,
+        children: PropTypes.node.isRequired,
+        onRender: PropTypes.func
+    };
+
+    static defaultProps = {
+        inline: false,
+        onRender: () => {}
+    };
+
+    static contextTypes = {
+        MathJax: PropTypes.object
+    };
 
     /**
      * Render the math once the node is mounted
      */
     componentDidMount() {
         this.typeset();
-    },
+    }
 
     /**
      * Update the jax, force update if the display mode changed
      */
     componentDidUpdate(prevProps) {
-        const forceUpdate = prevProps.inline != this.props.inline;
+        const forceUpdate = prevProps.inline !== this.props.inline;
         this.typeset(forceUpdate);
-    },
+    }
 
     /**
      * Prevent update when the tex has not changed
      */
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         return (
-            nextProps.children != this.props.children
-            || nextProps.inline != this.props.inline
-            || nextContext.MathJax != this.context.MathJax
+            nextProps.children !== this.props.children ||
+            nextProps.inline !== this.props.inline ||
+            nextContext.MathJax !== this.context.MathJax
         );
-    },
+    }
 
     /**
      * Clear the math when unmounting the node
      */
     componentWillUnmount() {
         this.clear();
-    },
+    }
 
     /**
      * Clear the jax
@@ -70,7 +76,7 @@ const MathJaxNode = React.createClass({
         if (jax) {
             jax.Remove();
         }
-    },
+    }
 
     /**
      * Update math in the node.
@@ -100,13 +106,11 @@ const MathJaxNode = React.createClass({
                     process(MathJax, script, onRender);
                 }
             });
-
-
         } else {
             const script = this.setScriptText(text);
             process(MathJax, script, onRender);
         }
-    },
+    }
 
     /**
      * Create a script
@@ -119,7 +123,7 @@ const MathJaxNode = React.createClass({
         if (!this.script) {
             this.script = document.createElement('script');
             this.script.type = 'math/tex; ' + (inline ? '' : 'mode=display');
-            this.refs.node.appendChild(this.script);
+            this.node.appendChild(this.script);
         }
 
         if ('text' in this.script) {
@@ -130,11 +134,17 @@ const MathJaxNode = React.createClass({
         }
 
         return this.script;
-    },
+    }
 
     render() {
-        return <span ref="node" />;
+        return (
+            <span
+                ref={node => {
+                    this.node = node;
+                }}
+            />
+        );
     }
-});
+}
 
-module.exports = MathJaxNode;
+export default MathJaxNode;
