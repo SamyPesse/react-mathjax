@@ -10,7 +10,7 @@ React component to display math formulas.
 $ npm i react-mathjax --save
 ```
 
-### Usage
+### Basic Usage
 
 ```js
 const MathJax = require('react-mathjax')
@@ -30,4 +30,33 @@ module.exports = () => {
         </MathJax.Context>
     );
 }
+```
+
+### Text and equations
+
+If you want to render TeX with text + equations in line, you can simply pass in `tex2jax` options to MathJax and use the `Context` component:
+
+```js
+const options = {
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  showMathMenu: false,
+  tex2jax: {
+    processEnvironments: true,
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    preview: 'none',
+    processEscapes: true
+  }
+};
+
+module.exports = () => {
+    return (
+      <MathJax.Context options={options}>
+        <div>
+          Here is a $r_2(n) = \\{ (a,b) \\in \\mathbb{Z} | a^2 + b^2 = n \\}$, which counts the number of representations of $n$ as a number of 2 squares.
+        </div>
+      </MathJax.Context>
+    );
+};
 ```
