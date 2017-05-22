@@ -2,7 +2,8 @@
 const React = require('react');
 const loadScript = require('load-script');
 
-const DEFAULT_SCRIPT = 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+const DEFAULT_SCRIPT =
+    'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
 
 const DEFAULT_OPTIONS = {
     tex2jax: {
