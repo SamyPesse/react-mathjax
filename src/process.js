@@ -20,7 +20,7 @@ function process(MathJax, script, callback) {
 function doProcess(MathJax) {
     MathJax.Hub.Queue(function() {
         const oldElementScripts = MathJax.Hub.elementScripts;
-        MathJax.Hub.elementScripts = (element) => pendingScripts;
+        MathJax.Hub.elementScripts = element => pendingScripts;
 
         try {
             return MathJax.Hub.Process(null, () => {
@@ -43,4 +43,4 @@ function doProcess(MathJax) {
     });
 }
 
-module.exports = process;
+export default process;
