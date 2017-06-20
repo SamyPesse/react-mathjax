@@ -1,5 +1,5 @@
 # `react-mathjax`
-## `(updated with React 15.6.1)`
+#### (updated with React 15.6.1)
 
 [![NPM version](https://badge.fury.io/js/react-mathjax.svg)](http://badge.fury.io/js/react-mathjax)
 
