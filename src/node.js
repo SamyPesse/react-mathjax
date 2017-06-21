@@ -7,7 +7,7 @@ const process = require('./process');
  * React component to render maths using mathjax
  * @type {ReactClass}
  */
-const MathJaxNode = React.createClass({
+const MathJaxNode = createReactClass({
     
     getDefaultProps() {
         return {
