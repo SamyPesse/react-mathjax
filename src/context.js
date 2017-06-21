@@ -19,7 +19,7 @@ const DEFAULT_OPTIONS = {
  * Context for loading mathjax
  * @type {[type]}
  */
-const MathJaxContext = React.createClass({
+const MathJaxContext = createReactClass({
     
     getDefaultProps() {
         return {
