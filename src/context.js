@@ -1,5 +1,7 @@
 /* global MathJax */
 const React = require('react');
+const createReactClass = require('create-react-class');
+const PropTypes = require('prop-types');
 const loadScript = require('load-script');
 
 const DEFAULT_SCRIPT =
@@ -17,20 +19,8 @@ const DEFAULT_OPTIONS = {
  * Context for loading mathjax
  * @type {[type]}
  */
-const MathJaxContext = React.createClass({
-    propTypes: {
-        children: React.PropTypes.node.isRequired,
-        script:   React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.oneOf([false])
-        ]),
-        options:  React.PropTypes.object
-    },
-
-    childContextTypes: {
-        MathJax: React.PropTypes.object
-    },
-
+const MathJaxContext = createReactClass({
+    
     getDefaultProps() {
         return {
             script: DEFAULT_SCRIPT,
@@ -74,5 +64,19 @@ const MathJaxContext = React.createClass({
         return React.Children.only(children);
     }
 });
+
+
+MathJaxContext.propTypes = {
+    children: PropTypes.node.isRequired,
+    script:   PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.oneOf([false])
+    ]),
+    options:  PropTypes.object
+};
+
+MathJaxContext.childContextTypes = {
+    MathJax: PropTypes.object
+};
 
 module.exports = MathJaxContext;

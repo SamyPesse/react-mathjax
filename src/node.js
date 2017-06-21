@@ -1,21 +1,14 @@
 const React = require('react');
+const createReactClass = require('create-react-class');
+const PropTypes = require('prop-types');
 const process = require('./process');
 
 /**
  * React component to render maths using mathjax
  * @type {ReactClass}
  */
-const MathJaxNode = React.createClass({
-    propTypes: {
-        inline:   React.PropTypes.bool,
-        children: React.PropTypes.node.isRequired,
-        onRender: React.PropTypes.func
-    },
-
-    contextTypes: {
-        MathJax: React.PropTypes.object
-    },
-
+const MathJaxNode = createReactClass({
+    
     getDefaultProps() {
         return {
             inline:   false,
@@ -136,5 +129,16 @@ const MathJaxNode = React.createClass({
         return <span ref="node" />;
     }
 });
+
+
+MathJaxNode.propTypes = {
+    inline:   PropTypes.bool,
+    children: PropTypes.node.isRequired,
+    onRender: PropTypes.func
+};
+
+MathJaxNode.contextTypes = {
+    MathJax: PropTypes.object
+};
 
 module.exports = MathJaxNode;
