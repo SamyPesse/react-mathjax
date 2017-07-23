@@ -15,7 +15,7 @@ $ yarn add react-mathjax
 ### Usage
 
 ```javascript
-import MathJax from 'react-mathjax'
+import * as MathJax from 'react-mathjax'
 
 const tex = `f(x) = \\int_{-\\infty}^\\infty
     \\hat f(\\xi)\\,e^{2 \\pi i \\xi x}
