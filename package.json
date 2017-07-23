@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint src",
-    "prepare": "NODE_ENV=production babel --out-dir ./lib ./src --ignore '**/*.test.js'",
+    "prepublish": "NODE_ENV=production babel --out-dir ./lib ./src --ignore '**/*.test.js'",
     "test": "jest",
     "build-example": "browserify ./example/main.js -o ./example/bundle.js -t [ babelify --presets [ babel-preset-react-app ] ]",
     "serve-example": "http-server ./example/ -p 8080",
