@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import process from './process'
+import processScript from './processScirpt'
 
 /**
  * React component to render maths using mathjax
@@ -97,12 +97,12 @@ class MathJaxNode extends Component {
         if (jax) jax.Text(text, onRender)
         else {
           const script = this.setScriptText(text)
-          process(MathJax, script, onRender)
+          processScript(MathJax, script, onRender)
         }
       })
     } else {
       const script = this.setScriptText(text)
-      process(MathJax, script, onRender)
+      processScript(MathJax, script, onRender)
     }
   }
 
