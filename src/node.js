@@ -116,7 +116,7 @@ class MathJaxNode extends Component {
 
     if (!this.script) {
       this.script = document.createElement('script')
-      this.script.type = 'math/tex ' + (inline ? '' : 'mode=display')
+      this.script.type = 'math/tex; ' + (inline ? '' : 'mode=display')
       this.node.appendChild(this.script)
     }
 
