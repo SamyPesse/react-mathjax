@@ -34,7 +34,7 @@ class MathJaxNode extends Component {
    * Update the jax, force update if the display mode changed
    */
   componentDidUpdate(prevProps) {
-    const forceUpdate = prevProps.inline != this.props.inline
+    const forceUpdate = prevProps.inline !== this.props.inline
     this.typeset(forceUpdate)
   }
 
@@ -43,9 +43,9 @@ class MathJaxNode extends Component {
    */
   shouldComponentUpdate(nextProps, nextState, nextContext) {
     return (
-      nextProps.children != this.props.children ||
-      nextProps.inline != this.props.inline ||
-      nextContext.MathJax != this.context.MathJax
+      nextProps.children !== this.props.children ||
+      nextProps.inline !== this.props.inline ||
+      nextContext.MathJax !== this.context.MathJax
     )
   }
 
