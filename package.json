@@ -4,9 +4,9 @@
   "description": "React component to render math",
   "main": "./lib/index.js",
   "scripts": {
-    "lint": "eslint .",
-    "prepublish": "NODE_ENV=development babel --out-dir ./lib ./src",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src",
+    "prepublish": "NODE_ENV=production babel --out-dir ./lib ./src --ignore '**/*.test.js'",
+    "test": "jest",
     "build-example": "browserify ./example/main.js -o ./example/bundle.js -t [ babelify --presets [ babel-preset-react-app ] ]",
     "serve-example": "http-server ./example/ -p 8080",
     "start": "npm run build-example; npm run serve-example",
@@ -28,23 +28,27 @@
   },
   "homepage": "https://github.com/SamyPesse/react-mathjax#readme",
   "peerDependencies": {
+    "prop-types": "*",
     "react": "*"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.20.0",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-react-app": "^2.2.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
     "eslint": "^3.12.0",
-    "eslint-config-gitbook": "^1.4.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-react": "^7.1.0",
     "gh-pages": "^0.12.0",
     "http-server": "^0.9.0",
+    "jest": "^20.0.4",
     "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react-dom": "^15.4.1",
+    "react-test-renderer": "^15.6.1"
   },
   "dependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.20.0",
-    "babel-preset-react-app": "^2.2.0",
-    "load-script": "^1.0.0",
-    "prop-types": "^15.5.10"
+    "load-script": "^1.0.0"
   }
 }
