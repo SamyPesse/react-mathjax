@@ -62,6 +62,7 @@ class MathJaxContext extends Component {
     }
     const { options } = this.props
     MathJax.Hub.Config(options)
+    this.forceUpdate()
   }
 
   render() {
