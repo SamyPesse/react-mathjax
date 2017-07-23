@@ -55,7 +55,7 @@ class MathJaxContext extends Component {
     loadScript(script, this.onLoad)
   }
 
-  onLoad(err) {
+  onLoad = err=>{
     if (err){
       console.error('Error', err.message, err)
       return
