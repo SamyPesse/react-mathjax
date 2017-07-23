@@ -1,5 +1,6 @@
 {
   "presets": [
-    "babel-preset-react-app"
+    "react-app",
+    "env"
   ]
 }
