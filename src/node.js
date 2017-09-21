@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import processScript from './processScirpt'
+import processScript from './processScript'
 
 /**
  * React component to render maths using mathjax
