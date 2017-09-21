@@ -1,3 +1,21 @@
 {
-    "extends": "gitbook"
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "mocha": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    // overrides
+    "no-console": 0,
+    "react/prop-types": 0
+  }
 }

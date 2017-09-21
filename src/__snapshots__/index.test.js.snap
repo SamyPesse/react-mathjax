@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+<div>
+  This is an inline math formula: 
+  <span />
+  And a block one:
+  <span />
+</div>
+`;
