@@ -1,4 +1,5 @@
 const React = require('react');
+const PropTypes = require('prop-types');
 const process = require('./process');
 
 /**
@@ -7,13 +8,13 @@ const process = require('./process');
  */
 const MathJaxNode = React.createClass({
     propTypes: {
-        inline:   React.PropTypes.bool,
-        children: React.PropTypes.node.isRequired,
-        onRender: React.PropTypes.func
+        inline:   PropTypes.bool,
+        children: PropTypes.node.isRequired,
+        onRender: PropTypes.func
     },
 
     contextTypes: {
-        MathJax: React.PropTypes.object
+        MathJax: PropTypes.object
     },
 
     getDefaultProps() {
