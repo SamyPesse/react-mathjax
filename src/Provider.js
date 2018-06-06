@@ -15,7 +15,7 @@ class MathJaxProvider extends React.Component<*, *> {
 
     static defaultProps = {
         script:
-            'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML',
+            'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
         options: {
             tex2jax: {
                 inlineMath: []
