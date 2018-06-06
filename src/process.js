@@ -1,14 +1,16 @@
+/* @flow */
 let pendingScripts = [];
 let pendingCallbacks = [];
 let needsProcess = false;
 
-/**
- * Process math in a script node using MathJax
- * @param {MathJax}  MathJax
- * @param {DOMNode}  script
- * @param {Function} callback
+/*
+ * Process math in a script node using MathJax.
  */
-function process(MathJax, script, callback) {
+function process(
+    MathJax: Object,
+    script: HTMLScriptElement,
+    callback: () => void
+) {
     pendingScripts.push(script);
     pendingCallbacks.push(callback);
     if (!needsProcess) {
@@ -17,18 +19,18 @@ function process(MathJax, script, callback) {
     }
 }
 
-function doProcess(MathJax) {
-    MathJax.Hub.Queue(function() {
+function doProcess(MathJax: Object) {
+    MathJax.Hub.Queue(() => {
         const oldElementScripts = MathJax.Hub.elementScripts;
-        MathJax.Hub.elementScripts = (element) => pendingScripts;
+        MathJax.Hub.elementScripts = element => pendingScripts;
 
         try {
             return MathJax.Hub.Process(null, () => {
                 // Trigger all of the pending callbacks before clearing them
                 // out.
-                for (const callback of pendingCallbacks) {
+                pendingCallbacks.forEach(callback => {
                     callback();
-                }
+                });
 
                 pendingScripts = [];
                 pendingCallbacks = [];
@@ -43,4 +45,4 @@ function doProcess(MathJax) {
     });
 }
 
-module.exports = process;
+export default process;

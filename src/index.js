@@ -1,7 +1,10 @@
-const MathJaxNode = require('./node');
-const MathJaxContext = require('./context');
+/* @flow */
+import Provider from './Provider';
+import Node from './Node';
 
-module.exports = {
-    Node:    MathJaxNode,
-    Context: MathJaxContext
+const MathJax = {
+    Provider,
+    Node
 };
+
+export default MathJax;

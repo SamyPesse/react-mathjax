@@ -20,14 +20,14 @@ const tex = `f(x) = \\int_{-\\infty}^\\infty
 
 module.exports = () => {
     return (
-        <MathJax.Context>
+        <MathJax.Provider>
             <div>
-                This is an inline math formula: <MathJax.Node inline>{'a = b'}</MathJax.Node>
+                This is an inline math formula: <MathJax.Node inline formula={'a = b'} />
                 And a block one:
 
-                <MathJax.Node>{tex}</MathJax.Node>
+                <MathJax.Node formula={tex} />
             </div>
-        </MathJax.Context>
+        </MathJax.Provider>
     );
 }
 ```
