@@ -1,11 +1,11 @@
 {
   "name": "react-mathjax",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "React component to render math using MathJax",
   "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint ./src",
-    "prepublish": "babel --out-dir ./lib ./src",
+    "prepare": "babel --out-dir ./lib ./src",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-example": "browserify ./example/main.js -o ./example/bundle.js -t [ babelify ]",
     "serve-example": "http-server ./example/ -p 8080",
