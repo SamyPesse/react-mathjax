@@ -42,11 +42,17 @@ class MathJaxProvider extends React.Component<*, *> {
         this.load();
     }
 
+    componentWillUnmount() {
+        this.preventLoad = true;
+    }
+
     // Is there any math nodes to typeset ?
     hasNodes: boolean = false;
 
     // Have we already loaded MathJax ?
     loaded: boolean = false;
+
+    preventLoad: boolean = false;
 
     /*
      * Signal that there is at least one node to typeset.
@@ -73,10 +79,14 @@ class MathJaxProvider extends React.Component<*, *> {
             return;
         }
 
-        loadScript(script, this.onLoad);
+        this.loadScriptPromise = loadScript(script, this.onLoad);
     };
 
     onLoad = (err: ?Error) => {
+        // Don't try to run this script if the component has already unmounted.
+        if (this.preventLoad) {
+            return;
+        }
         const { options } = this.props;
         MathJax.Hub.Config(options);
 
